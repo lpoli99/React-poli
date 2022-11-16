@@ -1,24 +1,25 @@
 import React from "react";
 import CartIcon from "./CartIcon";
-import "./nav-bar.scss"
+import "./nav-bar.css";
+import {Link} from "react-router-dom";
 
 function NavBar(){
     return(
         <nav className="navMenu">
             <ul className="navList">
                 <li>
-                    <a>
+                    <Link to="/">
                         <h2>Repuestos Poli</h2>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="navItem">Categorias</a>
+                    <Link to="/category/neumaticos" className="navItem">Neumáticos</Link>
                 </li>
                 <li>
-                    <a href="#" className="navItem">Buscar</a>
+                    <Link to="/category/refrigerantes" className="navItem">Refrigerantes</Link>
                 </li>
                 <li>
-                    <a href="#" className="navItem">Consultar</a>
+                    <Link to="/category/aceites" className="navItem">Aceites</Link>
                 </li>
                 <li>
                     <CartIcon/>
