@@ -5,10 +5,10 @@ import {useParams} from "react-router-dom";
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
-  const {id} = useParams();
+  const {idItem} = useParams();
 
   async function getItemAsync() {
-      let response = await getSingleItem(id);
+      let response = await getSingleItem(idItem);
       setProduct(response);
     }
 
@@ -18,8 +18,7 @@ function ItemDetailContainer() {
 
     return (
       <div className='item-list'>
-        <CardSingleItem product={product}/>
-        
+        <CardSingleItem product={product}/> 
       </div>
     );
 }
