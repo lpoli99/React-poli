@@ -8,7 +8,7 @@ function NavBar(){
         <nav className="navMenu">
             <ul className="navList">
                 <li>
-                    <Link to="/">
+                    <Link to="/" className="navBrand">
                         <h2>Repuestos Poli</h2>
                     </Link>
                 </li>

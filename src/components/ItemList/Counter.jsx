@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Counter(props){
-    let [count, setCount] = React.useState(1)
+function Counter({stock, onAddToCart}){
+    let [count, setCount] = useState(1)
 
     function handleAdd(){
-        if (count < props.stock)
+        if (count < stock)
             setCount(count+1);
     }
 
@@ -14,10 +14,15 @@ function Counter(props){
     }
 
     return (
-        <div>
-            <button onClick={handleSubstract}>-</button>
-            <span>{count}</span>
-            <button onClick={handleAdd}>+</button>
+        <div className="itemcount_container">
+            <div className="itemcount_control">
+                <button onClick={handleSubstract}>-</button>
+                <span>{count}</span>
+                <button onClick={handleAdd}>+</button>
+            </div>
+            <div className="itemcount_btns">
+                <button onClick={() => onAddToCart(count)}>Agregar al Carrito</button>
+            </div>
         </div>
     )
 }
