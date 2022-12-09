@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getItems from "../../Services/mockService";
+import getItems, { getItemsByCat } from "../../Services/firestore";
 import {useParams} from "react-router-dom";
 import ItemList from './itemList.jsx';
 import Loader from '../Loader/loader';
@@ -9,8 +9,13 @@ function ItemListContainer() {
   const {idCategory} = useParams();
   
   async function getItemsAsync() {
-    let response = await getItems(idCategory);
-    setProducts(response);
+    if (!idCategory){
+      let response = await getItems();
+      setProducts(response);
+    } else {
+      let response = await getItemsByCat(idCategory);
+      setProducts(response);
+    }
   }
 
   useEffect(() => {
