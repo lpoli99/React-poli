@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Button } from 'react-bootstrap';
 
 function Counter({stock, onAddToCart}){
     let [count, setCount] = useState(1)
@@ -16,12 +17,12 @@ function Counter({stock, onAddToCart}){
     return (
         <div className="itemcount_container">
             <div className="itemcount_control">
-                <button onClick={handleSubstract}>-</button>
+                <Button onClick={handleSubstract} variant="danger" size="sm">-</Button>
                 <span>{count}</span>
-                <button onClick={handleAdd}>+</button>
+                <Button onClick={handleAdd} variant="success" size="sm">+</Button>
             </div>
             <div className="itemcount_btns">
-                <button onClick={() => onAddToCart(count)}>Agregar al Carrito</button>
+                <Button onClick={() => onAddToCart(count)} variant="info" size="sm">Agregar al Carrito</Button>
             </div>
         </div>
     )

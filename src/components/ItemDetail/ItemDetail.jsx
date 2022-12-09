@@ -1,15 +1,17 @@
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Counter from '../ItemList/Counter';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {cartContext} from "../../context/cartContext";
+import { Button } from 'react-bootstrap';
 
 function CardSingleItem({product}) {
+  const [isInCart, setIsInCart] = useState(false);
   const {addToCart} = useContext(cartContext);
 
   function onAddToCart(count){
-    alert(`Agregaste ${count} items al carrito!`);
-    addToCart(product, count)
+    setIsInCart(count);
+    addToCart(product, count);
   }
   return (
     <Card style={{ width: '18rem' }}>
@@ -20,7 +22,10 @@ function CardSingleItem({product}) {
           Descripcion: {product.description}.  
           Precio: ${product.price}
         </Card.Text>
-        <Counter stock={product.stock} onAddToCart={onAddToCart}/>
+        {
+          isInCart ? <Button variant='warning' size='sm'>Ir al carrito</Button> : <Counter stock={product.stock} onAddToCart={onAddToCart}/>
+        }
+        
       </Card.Body>
     </Card>
   );

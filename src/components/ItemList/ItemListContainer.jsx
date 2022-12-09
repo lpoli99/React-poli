@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import CardItem from './Item.jsx';
 import getItems from "../../Services/mockService";
 import {useParams} from "react-router-dom";
+import ItemList from './itemList.jsx';
+import Loader from '../Loader/loader';
 
 function ItemListContainer() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
   const {idCategory} = useParams();
   
   async function getItemsAsync() {
@@ -16,23 +17,10 @@ function ItemListContainer() {
       getItemsAsync();
     },[idCategory]);
 
-  const styleH1 = {color: "white"};
-  let titulo = <h1 style={styleH1}>TODOS LOS PRODUCTOS</h1>;
+  
     return (
-      <div className='item-list'>
-        {titulo}
-        {products.map((product) =>{
-          return (
-            <CardItem
-              key={product.id}
-              id={product.id}
-              img={product.img}
-              title={product.title}
-              price={product.price}
-              stock={product.stock}
-            />
-          );
-        })}
+      <div className='catalogo'>
+        {products ? <ItemList products={products}/> : <Loader/>}
       </div>
     );
 }

@@ -2,25 +2,33 @@ import { useState, useEffect } from 'react';
 import CardSingleItem from './ItemDetail';
 import {getSingleItem} from "../../Services/mockService";
 import {useParams} from "react-router-dom";
+import Loader from '../Loader/loader';
 
 function ItemDetailContainer() {
   const [product, setProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const {idItem} = useParams();
 
   async function getItemAsync() {
-      let response = await getSingleItem(idItem);
-      setProduct(response);
+      getSingleItem(idItem).then(response=>{
+        setProduct(response);
+        setIsLoading(false);
+
+      });
     }
 
   useEffect(() => {
       getItemAsync();
-    },[]);
+  },[]);
 
-    return (
-      <div className='item-list'>
-        <CardSingleItem product={product}/> 
-      </div>
-    );
+  if(isLoading)
+    return (<Loader/>);
+    
+  return (
+    <div className='item-list'>
+      <CardSingleItem product={product}/> 
+    </div>
+  );
 }
 
 export default ItemDetailContainer;
