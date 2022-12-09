@@ -4,6 +4,7 @@ import Counter from '../ItemList/Counter';
 import { useContext, useState } from "react";
 import {cartContext} from "../../context/cartContext";
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function CardSingleItem({product}) {
   const [isInCart, setIsInCart] = useState(false);
@@ -23,7 +24,7 @@ function CardSingleItem({product}) {
           Precio: ${product.price}
         </Card.Text>
         {
-          isInCart ? <Button variant='warning' size='sm'>Ir al carrito</Button> : <Counter stock={product.stock} onAddToCart={onAddToCart}/>
+          isInCart ? <Link to="/cart"><Button variant='warning' size='sm'>Ir al carrito</Button></Link> : <Counter stock={product.stock} onAddToCart={onAddToCart}/>
         }
         
       </Card.Body>

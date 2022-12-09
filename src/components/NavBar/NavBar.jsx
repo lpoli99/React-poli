@@ -22,7 +22,7 @@ function NavBar(){
                     <Link to="/category/aceites" className="navItem">Aceites</Link>
                 </li>
                 <li>
-                    <CartIcon/>
+                    <Link to="/cart"><CartIcon/></Link>
                 </li>
             </ul>
         </nav>

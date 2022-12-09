@@ -6,7 +6,7 @@ function CartIcon() {
   const miContext = useContext(cartContext);
   return (
     <>
-      <a href="#">🛒</a>
+      <span>🛒</span>
       <span style={{color: "white"}}>{miContext.itemsInCart()}</span>
     </>
   )

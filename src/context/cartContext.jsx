@@ -4,8 +4,6 @@ export const cartContext = createContext();
 
 export function CartContextProvider({children}){
     
-    const saludoContext = "Hola Context!";
-    
     const [cart, setCart] = useState([]);
     
     function addToCart(product, count){ 
@@ -37,7 +35,6 @@ export function CartContextProvider({children}){
     }
 
     const value ={
-        saludoContext,
         itemsInCart,
         cart,
         addToCart,
