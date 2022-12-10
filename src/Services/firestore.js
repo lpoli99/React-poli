@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs, doc, getDoc, query, where} from "firebase/firestore";
+import {getFirestore, collection, getDocs, doc, getDoc, query, where, addDoc, orderBy} from "firebase/firestore";
+import products from "../data/data";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAO5AgbRl4G-hV-22S27MS9myW3fv_85mg",
@@ -15,7 +16,8 @@ const dB = getFirestore(app);
 
 export default async function getItems (){
   const collectionProductsRef = collection(dB, "productos");
-  const docSnap = await getDocs(collectionProductsRef);
+  const q = query(collectionProductsRef, orderBy("id"));
+  const docSnap = await getDocs(q);
   const documentsData = docSnap.docs.map(doc => {
     return {
       ...doc.data(),
@@ -45,4 +47,10 @@ export async function getItemsByCat(categoryReq){
     }
   });
   return documentsData;
+}
+
+export async function createOrder(order){
+  const collectionRef = collection(dB, "orders");
+  const docOrder = await addDoc(collectionRef, order);
+  return docOrder.id;
 }

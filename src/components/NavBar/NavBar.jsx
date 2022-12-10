@@ -22,6 +22,9 @@ function NavBar(){
                     <Link to="/category/aceites" className="navItem">Aceites</Link>
                 </li>
                 <li>
+                    <Link to="/category/amortiguadores" className="navItem">Amortiguadores</Link>
+                </li>
+                <li>
                     <Link to="/cart"><CartIcon/></Link>
                 </li>
             </ul>

@@ -15,7 +15,7 @@ function CardSingleItem({product}) {
     addToCart(product, count);
   }
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '14rem' }}>
       <Card.Img variant="top" src={product.img}/>
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
@@ -25,8 +25,7 @@ function CardSingleItem({product}) {
         </Card.Text>
         {
           isInCart ? <Link to="/cart"><Button variant='warning' size='sm'>Ir al carrito</Button></Link> : <Counter stock={product.stock} onAddToCart={onAddToCart}/>
-        }
-        
+        } 
       </Card.Body>
     </Card>
   );
