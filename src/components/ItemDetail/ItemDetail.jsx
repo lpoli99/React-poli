@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Counter from '../ItemList/Counter';
+import Counter from '../Counter/Counter';
 import { useContext, useState } from "react";
 import {cartContext} from "../../context/cartContext";
 import { Button } from 'react-bootstrap';

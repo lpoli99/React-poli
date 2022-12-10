@@ -8,7 +8,7 @@ function CardItem({title, img, price, discount, id}) {
   const urlDetail = `/detail/${id}`;
   return (
     <Card style={{ width: '12rem' }}>
-      <Card.Img variant="top" src={img}/>
+      <Card.Img variant="top" src={img} alt={title}/>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>

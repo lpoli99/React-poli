@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Tienda de repuestos React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es un e-commerce de una tienda de repuestos de automoviles ficticia, realizada durante el curso de React.js de CoderHouse.
 
 ## Available Scripts
 

@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { cartContext } from "../../context/cartContext";
 import { createOrder } from "../../Services/firestore";
 import { useNavigate } from "react-router-dom";
-
+import CartForm from "./CartForm";
 
 function CartView() {
     const {cart} = useContext(cartContext);
@@ -11,17 +11,13 @@ function CartView() {
     if(cart.length === 0 ) 
         return (
             <div className="cart-container">
-                <h1>Carrito Vacío!</h1>
+                <h1>¡El carrito está vacío!</h1>
             </div>
         ); 
     
-    async function handlePayment(e){
+    async function handlePayment(e, data){
         const order = {
-            buyer: {
-                name: "Luciano",
-                email: "pepe123456@yimeil.com",
-                cellphone: "0303456"
-            },
+            buyer: data,
             items: cart,
             total: 0,
             date: new Date(),
@@ -42,7 +38,7 @@ function CartView() {
                 ))}
             </div>
             <Button variant="info" size="sm">Vaciar Carrito</Button>
-            <Button variant="success" size="sm" onClick={handlePayment}>Finalizar Compra</Button>
+            <CartForm onSubmit={handlePayment}/>
         </div>
     );
    
