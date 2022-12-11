@@ -18,15 +18,19 @@ export function CartContextProvider({children}){
             setCart(newCart);
         }
     }
-    /* function clear ()
+    function removeItemCart (item){
+        let indx = cart.findIndex(product => product.id === item.id);
+        cart.splice(indx, 1);
+        setCart(structuredClone(cart))
+    }
 
-    function removeItem(id){
+    /*function clearCart(){
 
     } */
 
     function cartTotal(){
         let totalP = 0;
-        cart.forEach((product) => (totalP = totalP + product.price * product.count));
+        cart.forEach((product) => (totalP += product.price * product.count));
         return totalP;
     } 
 
@@ -41,7 +45,10 @@ export function CartContextProvider({children}){
         cart,
         addToCart,
         cartTotal,
+        removeItemCart,
+
     };
+
     return(
         <cartContext.Provider value={value}>
             {children}

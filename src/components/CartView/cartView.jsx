@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import CartForm from "./CartForm";
 
 function CartView() {
-    const {cart} = useContext(cartContext);
+
+    const {cart, cartTotal, removeItemCart} = useContext(cartContext);
     const navigate = useNavigate();
     if(cart.length === 0 ) 
         return (
@@ -25,17 +26,19 @@ function CartView() {
         const idOrder = await createOrder(order);
         navigate(`/finish/${idOrder}`);
     }
+    const totalP = cartTotal();
     return (
-        <div className="cart-container">
-            <div className="cart-itemsList">
+        <div className="cartContainer">
+            <div className="cartItemsL">
                 {cart.map((item) =>(
-                    <div key={item.id} className="cart-items">
+                    <div key={item.id} className="cartItems">
                         <h2>{item.title}</h2>
                         <h4>${item.price}</h4>
                         <h4>Cantidad: {item.count}</h4>
-                        <Button variant="danger" size="sm">X</Button>
+                        <Button variant="danger" size="sm" onClick={removeItemCart}>🗑</Button>
                     </div>
                 ))}
+                <h2>Total: {totalP}</h2>
             </div>
             <Button variant="info" size="sm">Vaciar Carrito</Button>
             <CartForm onSubmit={handlePayment}/>
