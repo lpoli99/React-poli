@@ -24,9 +24,9 @@ export function CartContextProvider({children}){
         setCart(structuredClone(cart))
     }
 
-    /*function clearCart(){
-
-    } */
+    function clearCart(){
+        setCart([]);
+    } 
 
     function cartTotal(){
         let totalP = 0;
@@ -46,7 +46,7 @@ export function CartContextProvider({children}){
         addToCart,
         cartTotal,
         removeItemCart,
-
+        clearCart
     };
 
     return(

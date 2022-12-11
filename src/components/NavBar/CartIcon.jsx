@@ -7,7 +7,7 @@ function CartIcon() {
   return (
     <>
       <span>🛒</span>
-      <span style={{color: "white"}}>{miContext.itemsInCart()}</span>
+      <small style={{color: "white"}}>{miContext.itemsInCart()}</small>
     </>
   )
 }

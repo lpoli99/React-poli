@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <CartContextProvider>
         <BrowserRouter>
-          <header className="App-header">
+          <header>
             <NavBar />
           </header>
           <Routes>

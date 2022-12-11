@@ -25,7 +25,7 @@ function ItemDetailContainer() {
     return (<Loader/>);
     
   return (
-    <div className='item-list'>
+    <div className='itemListD'>
       <CardSingleItem product={product}/> 
     </div>
   );
